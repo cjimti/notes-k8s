@@ -1,2 +1,3 @@
-# nodes-k8s
+# Kubernetes
+
 Getting started with Kubernetes
