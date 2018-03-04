@@ -25,17 +25,60 @@ For anyone planning to support a production Kubernetes cluster and wants to unde
 ## Test Installation
 
 ```bash
+$ minikube version
+minikube version: v0.25.0
+
+$ minikube start
+Starting local Kubernetes v1.9.0 cluster...
+Starting VM...
+Getting VM IP address...
+Moving files into cluster...
+Setting up certs...
+Connecting to cluster...
+Setting up kubeconfig...
+Starting cluster components...
+Kubectl is now configured to use the cluster.
+Loading cached images from config file.
+
 $ minikube addons list
+- addon-manager: enabled
+- coredns: disabled
+- dashboard: enabled
+- default-storageclass: enabled
+- efk: disabled
+- freshpod: disabled
+- heapster: disabled
+- ingress: disabled
+- kube-dns: enabled
+- registry: disabled
+- registry-creds: disabled
+- storage-provisioner: enabled
+
 
 # enable heapster for cpu and mem
 $ minikube addons enable heapster
+heapster was successfully enabled
 
-# open the dashboard
+# open the dashboard (in browser)
 $ minikube dashboard
 
 ```
 
-## Try a few commands
+## Get some status
+
+```bash
+# are we running a cluster?
+$ kubectl cluster-info
+Kubernetes master is running at https://192.168.99.100:8443
+
+# we should have a minikube node
+$ kubectl get nodes
+NAME       STATUS    ROLES     AGE       VERSION
+minikube   Ready     <none>    2d        v1.9.0
+
+```
+
+## Create a Deployment
 
 Run a "hello world" using example echoserver
 
@@ -61,3 +104,16 @@ http://192.168.99.100:31923
 
 ```
 
+### Architecture
+
+Read [Kubernetes Basics] for a better understanding.
+
+- A Node has Pods
+- A Pod has (Docker in our case) containers and volumes
+
+
+### Create a 
+
+
+
+[Kubernetes Basics]: https://kubernetes.io/docs/tutorials/kubernetes-basics/
