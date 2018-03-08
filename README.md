@@ -125,7 +125,8 @@ http://192.168.99.100:31923
 
 Command | Description
 ------- | -----------
-`kubectl get pod`              | Get information about all running pods
+`kubectl get pods -o wide`       | Get information about all running pods in the default namespace
+`kubectl get pods -o wide --namespace=test` | Get information about all running pods in the **test** namespace
 `kubectl describe pod <pod>`   | Describe one pod
 `kubectl expose pod <pod> --port=2701 --name=api` | Expose the port of a pod (creates a new service)
 `kubectl attach <podname> -i`          | Attach to a pod
